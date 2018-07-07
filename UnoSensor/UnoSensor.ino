@@ -16,8 +16,6 @@ LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars
 SoftwareSerial port1(11,10); //RX,TX
 SoftwareSerial port2(13,12);
 
-int period = 1000;
-unsigned long time_now = 0;
 
 void setup() {  
   Serial.begin(9600);
@@ -36,7 +34,6 @@ void loop() {
  delay(time_);
  Wire.requestFrom(coAddress, 20, 1);
  
- code = Wire.read();
  while(Wire.available()){        
   in_char = Wire.read();        
   data[i]= in_char;             

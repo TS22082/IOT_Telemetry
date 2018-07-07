@@ -8,8 +8,11 @@ SoftwareSerial port2(D6,D7); //RX,TX
 int period = 1000;
 unsigned long time_now = 0;
 
-int relay_1 = 16;
-int relay_2 = 5;
+void waitFor(int time){
+    int period = time;
+    unsigned long time_now = millis();
+    while(millis() < time_now + period){}
+  }
 
 #define FIREBASE_HOST "---fill in your own info here--"
 #define FIREBASE_AUTH "--this is the secret key---"
@@ -25,7 +28,7 @@ void setup(){
   Serial.print("Connecting");
   while(WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
-    delay(500);  
+    waitFor(500);  
   }
   Serial.print("connected: ");
   Serial.println(WiFi.localIP());
@@ -57,7 +60,5 @@ void loop(){
       break;
     }
   }
-  
-  time_now = millis();
-  while(millis() < time_now + period){}
+  waitFor(1000);
 }
