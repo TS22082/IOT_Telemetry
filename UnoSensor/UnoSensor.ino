@@ -39,8 +39,7 @@ void loop() {
   data[i]= in_char;             
   i+=1;                            
   if(in_char==0){                 
-    i=0;                        
-    Wire.endTransmission();     
+    i=0;                             
     break;                      
     }
   }
@@ -64,8 +63,7 @@ void loop() {
     data[i]= in_char;             
     i+=1;                            
     if(in_char==0){                 
-      i=0;                        
-      Wire.endTransmission();     
+      i=0;                             
       break;                      
     }
   }
